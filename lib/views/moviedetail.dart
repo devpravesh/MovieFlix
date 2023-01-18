@@ -24,7 +24,7 @@ class DetailScreen extends StatelessWidget {
                         'https://image.tmdb.org/t/p/original${controller.moviedetail[0]['poster_path']}'),
                     // size: 1.87KB
                     thumbnail: NetworkImage(
-                        'https://image.tmdb.org/t/p/original${controller.moviedetail[0]['poster_path']}'),
+                        'https://image.tmdb.org/t/p/original${controller.moviedetail[0]['backdrop_path']}'),
                     // size: 1.29MB
                     image: NetworkImage(
                       'https://image.tmdb.org/t/p/w342${controller.moviedetail[0]['poster_path']}',
@@ -86,12 +86,20 @@ class DetailScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 10),
-                            Text(
-                              controller.moviedetail[0]['overview'],
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                            Column(
+                              children: [
+                                Text(
+                                  controller.moviedetail[0]['overview'],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Text(
+                                  "Release Date ${controller.moviedetail[0]['release_date']}",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
                             ),
                           ],
                         ),
