@@ -114,7 +114,64 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_alt_outlined),
         backgroundColor: Colors.blue,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return SizedBox(
+                  height: 200,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text(
+                          'Select Filter',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            _controller.fetchingmovie();
+                          },
+                          child: ListTile(
+                            tileColor: Colors.amber[100],
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: const [
+                                Icon(Icons.list_alt),
+                                Text('All'),
+                                SizedBox()
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Divider(),
+                        InkWell(
+                          onTap: () {
+                            _controller.fetchintopratedgmovie();
+                          },
+                          child: ListTile(
+                            tileColor: Colors.amber[100],
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: const [
+                                Icon(Icons.star_border),
+                                Text('Top Rated Movies'),
+                                SizedBox()
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              });
+          // Get.defaultDialog(actions: [Text("All"), Text("Top Rated Movies")]);
+        },
       ),
     );
   }

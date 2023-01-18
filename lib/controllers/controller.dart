@@ -28,6 +28,21 @@ class MovieController extends GetxController {
     }
   }
 
+  fetchintopratedgmovie() async {
+    try {
+      isLoading(true);
+      var resp = await Services().topratedmovie();
+      if (resp != null) {
+        movielist.assign(resp);
+        // log(movielist.toString());
+      }
+    } catch (e) {
+      log(e.toString());
+    } finally {
+      isLoading(false);
+    }
+  }
+
   fetchingmoviedetail(var movieID) async {
     try {
       isLoading(true);

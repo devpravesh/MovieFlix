@@ -65,4 +65,25 @@ class Services {
       log(e.toString());
     }
   }
+
+  Future topratedmovie() async {
+    try {
+      //https://api.themoviedb.org/3/search/movie?api_key=6f17afa1982d03bb41c2ae52a3d35b6d&page=1&query=Thor
+      var response = await http
+          .get(
+            Uri.https("api.themoviedb.org", "/3/movie/top_rated", {
+              'api_key': '6f17afa1982d03bb41c2ae52a3d35b6d',
+            }),
+          )
+          .timeout(Duration(seconds: 15));
+      // log(response.toString());
+      print(response.body);
+      if (response.statusCode == 200) {
+        var jsonString = jsonDecode(response.body);
+        return jsonString;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }
