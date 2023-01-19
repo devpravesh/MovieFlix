@@ -4,7 +4,11 @@
 ## Getting Started
 
 <img src="https://user-images.githubusercontent.com/88076276/213360919-d9cc6fd0-eb20-4444-b321-1f7bf80a7ba9.gif" width="250" height="500"/>
+
+
+
 <!-- ![MovieFlix (1)](https://user-images.githubusercontent.com/88076276/213360919-d9cc6fd0-eb20-4444-b321-1f7bf80a7ba9.gif) -->
+[Paginationvideo.webm](https://user-images.githubusercontent.com/88076276/213491870-f50aeadb-fd86-44c7-946a-ed27544f4540.webm)
 
 
 A few resources to get you started if this is your first Flutter project:
