@@ -5,16 +5,18 @@ import 'package:movieflix_flutter/models/nowplaying.dart';
 
 class Services {
   static var client = http.Client();
-  Future fetchmovielist() async {
+  Future fetchmovielist(var currentpage) async {
     try {
       var response = await http
           .get(
-            Uri.https("api.themoviedb.org", "/3/movie/now_playing",
-                {'api_key': '6f17afa1982d03bb41c2ae52a3d35b6d', 'pages': '1'}),
+            Uri.https("api.themoviedb.org", "/3/movie/now_playing", {
+              'api_key': '6f17afa1982d03bb41c2ae52a3d35b6d',
+              'pages': '$currentpage'
+            }),
           )
           .timeout(Duration(seconds: 15));
       // log(response.toString());
-      print(response.body);
+      // print(response.body);
       if (response.statusCode == 200) {
         var jsonString = jsonDecode(response.body);
         return jsonString;

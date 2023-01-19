@@ -73,44 +73,58 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
       ),
       body: Obx(() => _controller.isLoading.value
           ? const LinearProgressIndicator()
-          : GridView.count(
-              padding: const EdgeInsets.all(5),
-              crossAxisCount: 3,
-              crossAxisSpacing: 4.0,
-              mainAxisSpacing: 8.0,
-              children: List.generate(
-                  _controller.movielist[0]['results'].length, (index) {
-                return Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      _controller.fetchingmoviedetail(
-                          _controller.movielist[0]['results'][index]['id']);
-                      Get.to(() => DetailScreen());
-                      // print(_controller.movielist[0]['results'][index]['id']);
-                    },
-                    child: Container(
-                      width: 250,
-                      // height: ,
-                      color: Colors.grey[300],
-                      child: CachedNetworkImage(
-                        filterQuality: FilterQuality.low,
-                        imageUrl:
-                            'https://image.tmdb.org/t/p/w342${_controller.movielist[0]['results'][index]['poster_path']}',
-                        errorWidget: (context, url, error) => const Icon(
-                          Icons.error,
-                          color: Colors.amber,
-                        ),
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        fit: BoxFit.fill,
-                        memCacheHeight: 250,
-                        memCacheWidth: 100,
-                      ),
-                    ),
-                  ),
-                );
-              }))),
+          : Column(
+              children: [
+                Expanded(
+                  child: GridView.count(
+                      controller: _controller.scrollController,
+                      padding: const EdgeInsets.all(5),
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 8.0,
+                      children: List.generate(
+                          _controller.movielist[0]['results'].length, (index) {
+                        return Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              _controller.fetchingmoviedetail(_controller
+                                  .movielist[0]['results'][index]['id']);
+                              Get.to(() => DetailScreen());
+                              // print(_controller.movielist[0]['results'][index]['id']);
+                            },
+                            child: Container(
+                              width: 250,
+                              // height: ,
+                              color: Colors.grey[300],
+                              child: CachedNetworkImage(
+                                filterQuality: FilterQuality.low,
+                                imageUrl:
+                                    'https://image.tmdb.org/t/p/w342${_controller.movielist[0]['results'][index]['poster_path']}',
+                                errorWidget: (context, url, error) =>
+                                    const Icon(
+                                  Icons.error,
+                                  color: Colors.amber,
+                                ),
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                fit: BoxFit.fill,
+                                memCacheHeight: 250,
+                                memCacheWidth: 100,
+                              ),
+                            ),
+                          ),
+                        );
+                      })),
+                ),
+                _controller.isLoadingmore.value
+                    ? const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: CircularProgressIndicator(),
+                      )
+                    : const SizedBox()
+              ],
+            )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_alt_outlined),
         backgroundColor: Colors.blue,
