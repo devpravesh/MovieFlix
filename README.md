@@ -1,10 +1,11 @@
-# movieflix_flutter
+# MovieFlix
 
-A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/88076276/213360919-d9cc6fd0-eb20-4444-b321-1f7bf80a7ba9.gif" width="250" height="500"/>
+<!-- ![MovieFlix (1)](https://user-images.githubusercontent.com/88076276/213360919-d9cc6fd0-eb20-4444-b321-1f7bf80a7ba9.gif) -->
+
 
 A few resources to get you started if this is your first Flutter project:
 
